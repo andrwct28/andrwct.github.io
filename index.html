@@ -3,70 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Do you want to be my girlfriend?</title>
+    <title>Do You Want to Be My Girlfriend?</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/963/53/127/harry-and-hermione-wallpaper-preview.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             height: 100vh;
             margin: 0;
-            background: url('https://c4.wallpaperflare.com/wallpaper/963/53/127/harry-and-hermione-wallpaper-preview.jpg') no-repeat center center fixed;
-            background-size: cover;
-            opacity: 0.8; /* Adjust the opacity to your preference */
-        }
-
-        #question {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #fff; /* White text color for better visibility */
-        }
-
-        #options {
             display: flex;
-            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
-
-        #yes,
-        #no {
-            cursor: pointer;
+        
+        #message {
+            position: absolute;
+            font-size: 24px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
         }
-
     </style>
 </head>
 <body>
-    <div>
-        <p id="question">Do you want to be my girlfriend?</p>
-        <div id="options">
-            <button id="yes">Yes</button>
-            <button id="no">No</button>
-        </div>
+    <div id="message">
+        Do you want to be my girlfriend?
+        <br>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
     </div>
-
+    
     <script>
-        const noButton = document.getElementById("no");
-        const yesButton = document.getElementById("yes");
-        let isMoving = false;
-
-        noButton.addEventListener("mousemove", () => {
-            if (!isMoving) {
-                const maxX = window.innerWidth - noButton.clientWidth;
-                const maxY = window.innerHeight - noButton.clientHeight;
-                const randomX = Math.random() * maxX;
-                const randomY = Math.random() * maxY;
-
-                noButton.style.left = `${randomX}px`;
-                noButton.style.top = `${randomY}px`;
-            }
-        });
-
-        noButton.addEventListener("click", () => {
-            isMoving = true;
-            alert("Nice try! But I'm not going anywhere.");
-        });
-
+        const messageDiv = document.getElementById("message");
+        const yesButton = document.getElementById("yesBtn");
+        const noButton = document.getElementById("noBtn");
+        
         yesButton.addEventListener("click", () => {
-            alert("I knew you were gonna say yes!");
+            alert("I knew you were going to say yes");
+        });
+        
+        noButton.addEventListener("mouseover", () => {
+            const maxX = window.innerWidth - messageDiv.clientWidth;
+            const maxY = window.innerHeight - messageDiv.clientHeight;
+            
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            messageDiv.style.left = `${newX}px`;
+            messageDiv.style.top = `${newY}px`;
         });
     </script>
 </body>
